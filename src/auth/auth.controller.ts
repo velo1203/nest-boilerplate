@@ -7,7 +7,7 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { AuthPayloadDto } from './dto/auth.dto';
+import { LoginDto, RegisterDto } from './dto/auth.dto';
 import { AuthService } from './auth.service';
 import { LocalGuard } from './guard/local.guard';
 import { Request } from 'express';
@@ -19,10 +19,15 @@ export class AuthController {
 
   @Post('login')
   @UseGuards(LocalGuard)
-  login(@Body() authPayload: AuthPayloadDto) {
-    const user = this.authService.validateUser(authPayload);
+  login(@Body() loginDto: LoginDto) {
+    const user = this.authService.validateUser(loginDto);
     if (!user) throw new HttpException('User not found', 401);
     return user;
+  }
+
+  @Post('register')
+  register(@Body() registerDto: RegisterDto) {
+    return 'hello';
   }
 
   @Get('status')
