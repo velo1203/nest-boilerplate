@@ -6,10 +6,12 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
-    super();
+    super({
+      usernameField: 'email', // 이메일 필드를 명시적으로 지정
+      passwordField: 'password', // 패스워드 필드는 기본값과 동일
+    });
   }
   validate(email: string, password: string) {
-    console.log('hello');
     const user = this.authService.validateUser({ email, password });
     if (!user) throw new UnauthorizedException();
     return user;
