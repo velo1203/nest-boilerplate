@@ -8,8 +8,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
     super();
   }
-  validate(username: string, password: string) {
-    const user = this.authService.validateUser({ username, password });
+  validate(email: string, password: string) {
+    const user = this.authService.validateUser({ email, password });
     if (!user) throw new UnauthorizedException();
     return user;
   }
