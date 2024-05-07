@@ -1,3 +1,16 @@
-# The Nest.js Boilerplate
+# Nestjs boilerplate
 
-This is a boilerplate for Nest.js projects. It includes a basic structure for a project, with a few examples of how to use the framework.
+This is the default boilerplate for Nest.js
+By default, we've built an authentication system using passport.
+
+## installation
+
+```bash
+npm install #install dependencies
+```
+
+## Running the app
+
+```bash
+npm run start:dev
+```
